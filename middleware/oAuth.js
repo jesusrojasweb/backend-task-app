@@ -6,8 +6,8 @@ const oAuth = (req, res, next) => {
   if (req.headers.authorization) {
     const accessTokenFrontend = req.headers.authorization.split(" ")[1];
     req.access_token = accessTokenFrontend;
-    next();
-    return;
+
+    return next();
   }
 
   const code = req.query.code;
@@ -33,7 +33,6 @@ const oAuth = (req, res, next) => {
       next();
     })
     .catch((err) => {
-      console.error(err);
       res.status(403).json(`Reason: ${err.message}`);
     });
 };

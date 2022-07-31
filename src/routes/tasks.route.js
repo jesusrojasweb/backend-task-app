@@ -44,14 +44,10 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/:taskId", async (req, res) => {
-  console.log("put");
   try {
     const { access_token = undefined } = req;
 
-    console.log(req.params.taskId);
-
     const { taskId } = req.params;
-    console.log(req.body);
 
     const response = await axios({
       method: "put",
